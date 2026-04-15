@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3T Roofing & Enterprise (Pty) Ltd | Built Tough. Roofed Right.</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Barlow & Barlow Condensed -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600&family=Barlow+Condensed:wght@900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --steel: #1a1c1e;
+            --deep-red: #c0392b;
+            --gold: #f39c12;
+        }
+
+        body {
+            font-family: 'Barlow', sans-serif;
+            background-color: var(--steel);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .heading-font {
+            font-family: 'Barlow Condensed', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+        }
+
+        /* Video Background Styling */
+        .video-docker {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .video-docker video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .video-overlay {
+            background: linear-gradient(to bottom, rgba(26, 28, 30, 0.75), rgba(26, 28, 30, 0.95));
+        }
+
+        /* Corrugated Metal Pattern Overlay */
+        .corrugated-bg {
+            background-image: repeating-linear-gradient(
+                45deg,
+                rgba(255, 255, 255, 0.03) 0px,
+                rgba(255, 255, 255, 0.03) 1px,
+                transparent 1px,
+                transparent 10px
+            );
+        }
+
+        /* Hero Watermark */
+        .watermark {
+            position: absolute;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 900;
+            font-size: 45vw;
+            line-height: 1;
+            color: rgba(255, 255, 255, 0.02);
+            z-index: 5;
+            pointer-events: none;
+            user-select: none;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Diagonal Pattern Overlay */
+        .diagonal-stripes {
+            background: repeating-linear-gradient(
+                45deg,
+                rgba(0, 0, 0, 0.1),
+                rgba(0, 0, 0, 0.1) 10px,
+                rgba(0, 0, 0, 0.2) 10px,
+                rgba(0, 0, 0, 0.2) 20px
+            );
+        }
+
+        /* Animations */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-card {
+            transition: all 0.3s ease;
+        }
+
+        @media (min-width: 768px) {
+            .service-card:hover {
+                border-top: 4px solid var(--deep-red);
+                background-color: #2a2c2e;
+                transform: translateY(-5px);
+            }
+        }
+
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25d366;
+            color: white;
+            width: 55px;
+            height: 55px;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+
+        @media (min-width: 768px) {
+            .whatsapp-float {
+                bottom: 30px;
+                right: 30px;
+                width: 60px;
+                height: 60px;
+            }
+            .whatsapp-float:hover {
+                transform: scale(1.1);
+            }
+        }
+
+        /* Mobile Menu */
+        #mobile-menu {
+            transition: transform 0.3s ease-in-out;
+            transform: translateX(100%);
+        }
+        #mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--deep-red);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- WhatsApp Floating Icon -->
+    <a href="https://wa.me/27688347082" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
+        <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 py-3 px-4 md:px-12 flex justify-between items-center bg-transparent">
+        <div class="flex flex-col">
+            <span class="heading-font text-xl md:text-3xl leading-none text-white font-black">3T ROOFING</span>
+            <span class="text-[9px] md:text-[10px] uppercase tracking-[0.2em] text-gray-400 font-semibold">& Enterprise (Pty) Ltd</span>
+        </div>
+        
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex space-x-8 items-center uppercase text-sm font-bold tracking-wider">
+            <a href="#home" class="hover:text-[#f39c12] transition-colors">Home</a>
+            <a href="#services" class="hover:text-[#f39c12] transition-colors">Services</a>
+            <a href="#about" class="hover:text-[#f39c12] transition-colors">About Us</a>
+            <a href="#contact" class="hover:text-[#f39c12] transition-colors">Quote</a>
+            <a href="tel:0688347082" class="bg-[#c0392b] hover:bg-[#a93226] text-white px-6 py-2 rounded-sm font-bold shadow-lg active:scale-95 transition-all">
+                Call Now
+            </a>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <button id="menu-toggle" class="md:hidden text-white p-2">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+        </button>
+    </nav>
+
+    <!-- Mobile Side Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 z-[60] bg-[#111] flex flex-col items-center justify-center space-y-8 md:hidden">
+        <button id="menu-close" class="absolute top-6 right-6 text-white">
+            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        <a href="#home" class="text-3xl font-black uppercase text-white hover:text-[#f39c12]" onclick="toggleMenu()">Home</a>
+        <a href="#services" class="text-3xl font-black uppercase text-white hover:text-[#f39c12]" onclick="toggleMenu()">Services</a>
+        <a href="#about" class="text-3xl font-black uppercase text-white hover:text-[#f39c12]" onclick="toggleMenu()">About Us</a>
+        <a href="#contact" class="text-3xl font-black uppercase text-white hover:text-[#f39c12]" onclick="toggleMenu()">Quote</a>
+        <a href="tel:0688347082" class="bg-[#c0392b] text-white px-10 py-4 font-black uppercase text-xl shadow-xl">Call Now</a>
+    </div>
+
+    <!-- Hero Section with Background Video -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
+        <div class="video-docker">
+            <!-- Fallback hierarchy: local file -> local uppercase file -> hosted web fallback -->
+            <video id="bgVideo" autoplay muted loop playsinline preload="auto">
+                <source src="background.mp4" type="video/mp4">
+                <source src="BACKGROUND.MP4" type="video/mp4">
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-construction-worker-working-on-a-roof-40342-large.mp4" type="video/mp4">
+            </video>
+        </div>
+        
+        <div class="video-overlay absolute top-0 left-0 w-full h-full z-10 corrugated-bg"></div>
+        <div class="watermark z-5">3T</div>
+        
+        <div class="container mx-auto px-6 relative z-20 text-center">
+            <div id="hero-content" class="fade-up max-w-4xl mx-auto py-20">
+                <span class="inline-block px-3 py-1 bg-[#f39c12] text-black font-black text-[10px] md:text-xs uppercase tracking-widest mb-6 shadow-xl">Katlehong | Gauteng</span>
+                <h1 class="text-5xl md:text-9xl mb-4 md:mb-6 leading-[0.9] text-white drop-shadow-2xl">
+                    Built <span class="text-[#c0392b]">Tough.</span><br>
+                    Roofed Right.
+                </h1>
+                <p class="text-lg md:text-2xl text-gray-200 mb-10 max-w-2xl mx-auto font-medium">
+                    Professional roofing and cladding solutions for South African homes and commercial enterprises.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <a href="#contact" class="w-full sm:w-auto bg-[#c0392b] hover:bg-[#a93226] text-white px-8 md:px-10 py-4 rounded-sm font-black text-base md:text-lg uppercase transition-all shadow-lg">
+                        Get a Free Quote
+                    </a>
+                    <a href="tel:0688347082" class="w-full sm:w-auto border-2 border-white hover:bg-white hover:text-black text-white px-8 md:px-10 py-4 rounded-sm font-black text-base md:text-lg uppercase transition-all">
+                        068 834 7082
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce z-20">
+            <svg class="w-5 h-5 md:w-6 md:h-6 text-[#f39c12]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <section class="bg-[#111] border-y border-gray-800 py-10 md:py-12 relative z-30">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center">
+                <div class="fade-up">
+                    <div class="text-[#f39c12] heading-font text-2xl md:text-3xl font-black mb-1">100%</div>
+                    <div class="text-[9px] md:text-xs uppercase tracking-widest text-gray-400 font-bold">Quality Guaranteed</div>
+                </div>
+                <div class="fade-up">
+                    <div class="text-[#f39c12] heading-font text-2xl md:text-3xl font-black mb-1">FAST</div>
+                    <div class="text-[9px] md:text-xs uppercase tracking-widest text-gray-400 font-bold">Turnaround</div>
+                </div>
+                <div class="fade-up">
+                    <div class="text-[#f39c12] heading-font text-2xl md:text-3xl font-black mb-1">REGISTERED</div>
+                    <div class="text-[9px] md:text-xs uppercase tracking-widest text-gray-400 font-bold">Pty Ltd Company</div>
+                </div>
+                <div class="fade-up">
+                    <div class="text-[#f39c12] heading-font text-2xl md:text-3xl font-black mb-1">FREE</div>
+                    <div class="text-[9px] md:text-xs uppercase tracking-widest text-gray-400 font-bold">Assessments</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 md:py-24 bg-[#1a1c1e]">
+        <div class="container mx-auto px-6 text-center">
+            <div class="mb-12 md:mb-16">
+                <h2 class="text-4xl md:text-7xl mb-4">Our <span class="text-[#c0392b]">Services</span></h2>
+                <div class="w-20 h-2 bg-[#f39c12] mx-auto mb-6"></div>
+                <p class="text-gray-400 max-w-xl mx-auto uppercase text-xs md:text-sm tracking-wide font-semibold">Specialized craftsmanship in every project.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="service-card bg-[#222] p-8 md:p-10 border border-gray-800 fade-up text-left">
+                    <div class="text-3xl md:text-4xl mb-6">🏗️</div>
+                    <h3 class="text-xl md:text-2xl mb-4 text-[#f39c12] font-black uppercase">New Roof Installation</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Masterful installation of tiled and corrugated roofing systems for residential developments.</p>
+                </div>
+                <div class="service-card bg-[#222] p-8 md:p-10 border border-gray-800 fade-up text-left">
+                    <div class="text-3xl md:text-4xl mb-6">🛠️</div>
+                    <h3 class="text-xl md:text-2xl mb-4 text-[#f39c12] font-black uppercase">Roof Repairs</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Rapid response for leak detection, structural repair, and general maintenance.</p>
+                </div>
+                <div class="service-card bg-[#222] p-8 md:p-10 border border-gray-800 fade-up text-left">
+                    <div class="text-3xl md:text-4xl mb-6">🏢</div>
+                    <h3 class="text-xl md:text-2xl mb-4 text-[#f39c12] font-black uppercase">Wall Cladding</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Industrial-grade metal cladding for modern structural aesthetics and protection.</p>
+                </div>
+                <div class="service-card bg-[#222] p-8 md:p-10 border border-gray-800 fade-up text-left">
+                    <div class="text-3xl md:text-4xl mb-6">💧</div>
+                    <h3 class="text-xl md:text-2xl mb-4 text-[#f39c12] font-black uppercase">Waterproofing</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Advanced waterproofing solutions for flat surfaces, chimneys, and ridge caps.</p>
+                </div>
+                <div class="service-card bg-[#222] p-8 md:p-10 border border-gray-800 fade-up text-left">
+                    <div class="text-3xl md:text-4xl mb-6">🌧️</div>
+                    <h3 class="text-xl md:text-2xl mb-4 text-[#f39c12] font-black uppercase">Gutters & Fascia</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Complete rainwater management systems designed to protect your foundation.</p>
+                </div>
+                <div class="service-card bg-[#222] p-8 md:p-10 border border-gray-800 fade-up text-left">
+                    <div class="text-3xl md:text-4xl mb-6">🔍</div>
+                    <h3 class="text-xl md:text-2xl mb-4 text-[#f39c12] font-black uppercase">Roof Inspections</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Professional assessment reports for insurance, real estate, or safety checks.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 md:py-24 bg-[#111] relative overflow-hidden">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="flex flex-col lg:flex-row gap-12 lg:gap-16 items-center">
+                <div class="w-full lg:w-1/2 fade-up">
+                    <h2 class="text-4xl md:text-7xl mb-8 leading-tight">Mastering The<br><span class="text-[#f39c12]">Art of Roofing</span></h2>
+                    <p class="text-lg md:text-xl text-gray-300 mb-6 font-bold uppercase italic">Built on Reliability. Defined by Quality.</p>
+                    <div class="space-y-6 text-gray-400 leading-relaxed text-sm md:text-base">
+                        <p>
+                            3T Roofing & Enterprise (Pty) Ltd is a fully registered, South African-born roofing specialist based in Katlehong. We were founded on the principles of <strong>Toughness, Trust, and Technicity</strong>—the three 'T's that define every project we undertake.
+                        </p>
+                        <p>
+                            Serving the Gauteng region, we understand the unique demands of our climate. From heavy summer storms to extreme UV exposure, our solutions are engineered to provide maximum protection for your assets.
+                        </p>
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2 fade-up">
+                    <div class="p-1 border-2 border-dashed border-gray-800">
+                        <div class="bg-[#222] p-8 md:p-12 border-2 border-[#c0392b] text-center">
+                            <h4 class="heading-font text-4xl md:text-5xl mb-4 text-white uppercase">Our Mission</h4>
+                            <p class="text-gray-400 mb-8 italic text-base md:text-lg">"To provide the community with industrial-grade roofing solutions that are affordable, reliable, and built to last."</p>
+                            <div class="h-1 w-20 bg-[#f39c12] mx-auto mb-8"></div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="bg-[#1a1c1e] p-4 border border-gray-800">
+                                    <span class="block text-[#c0392b] font-black text-xl md:text-2xl">PTY LTD</span>
+                                    <span class="text-[9px] uppercase tracking-widest font-bold">Registered</span>
+                                </div>
+                                <div class="bg-[#1a1c1e] p-4 border border-gray-800">
+                                    <span class="block text-[#c0392b] font-black text-xl md:text-2xl">LOCAL</span>
+                                    <span class="text-[9px] uppercase tracking-widest font-bold">Katlehong</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Band -->
+    <section class="bg-[#c0392b] py-16 md:py-20 diagonal-stripes relative overflow-hidden">
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <h2 class="text-3xl md:text-6xl text-white mb-8 heading-font drop-shadow-lg">Protect Your Asset Today.</h2>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 items-center">
+                <a href="tel:0688347082" class="w-full sm:w-auto bg-white text-[#c0392b] px-10 py-4 rounded-sm font-black text-lg uppercase shadow-2xl hover:scale-105 transition-all">
+                    Call 068 834 7082
+                </a>
+                <span class="text-white/70 font-bold hidden sm:inline">OR</span>
+                <a href="https://wa.me/27688347082" class="w-full sm:w-auto bg-[#25D366] text-white px-10 py-4 rounded-sm font-black text-lg uppercase shadow-2xl hover:scale-105 transition-all flex items-center justify-center gap-2">
+                    WhatsApp Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 md:py-24 bg-[#1a1c1e] corrugated-bg">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row gap-12 lg:gap-16">
+                <!-- Info -->
+                <div class="w-full lg:w-1/3 space-y-8 fade-up">
+                    <h2 class="text-4xl md:text-5xl mb-4">Contact <span class="text-[#c0392b]">Us</span></h2>
+                    <p class="text-gray-400 text-sm">Get in touch for a site visit and a free comprehensive quotation across Gauteng.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex gap-5 items-start">
+                            <div class="w-10 h-10 bg-[#222] flex items-center justify-center text-[#f39c12] border border-gray-700 shrink-0">📍</div>
+                            <div>
+                                <h5 class="font-bold uppercase text-white text-sm">Address</h5>
+                                <p class="text-xs text-gray-400 leading-relaxed">3630 Zone 2, Zonkizizwe, Katlehong, 1432</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-5 items-start">
+                            <div class="w-10 h-10 bg-[#222] flex items-center justify-center text-[#f39c12] border border-gray-700 shrink-0">📞</div>
+                            <div>
+                                <h5 class="font-bold uppercase text-white text-sm">Phone</h5>
+                                <a href="tel:0688347082" class="text-xs text-gray-400 hover:text-white">068 834 7082</a>
+                            </div>
+                        </div>
+                        <div class="flex gap-5 items-start">
+                            <div class="w-10 h-10 bg-[#222] flex items-center justify-center text-[#f39c12] border border-gray-700 shrink-0">✉️</div>
+                            <div>
+                                <h5 class="font-bold uppercase text-white text-sm">Email</h5>
+                                <a href="mailto:tmabaso879@gmail.com" class="text-xs text-gray-400 hover:text-white break-all">tmabaso879@gmail.com</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form -->
+                <div class="w-full lg:w-2/3 fade-up">
+                    <div class="bg-[#222] p-6 md:p-12 border border-gray-800 shadow-2xl">
+                        <h4 class="text-xl md:text-2xl mb-8 uppercase font-bold text-white border-b border-[#c0392b] inline-block pb-2">Request a Quote</h4>
+                        <form id="quote-form" class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div class="flex flex-col gap-2 text-left">
+                                <label class="text-[10px] uppercase font-bold text-gray-500 tracking-widest">Your Name</label>
+                                <input type="text" required class="bg-[#111] border border-gray-700 p-3 md:p-4 focus:border-[#f39c12] outline-none text-white text-sm">
+                            </div>
+                            <div class="flex flex-col gap-2 text-left">
+                                <label class="text-[10px] uppercase font-bold text-gray-500 tracking-widest">Phone Number</label>
+                                <input type="tel" required class="bg-[#111] border border-gray-700 p-3 md:p-4 focus:border-[#f39c12] outline-none text-white text-sm">
+                            </div>
+                            <div class="flex flex-col gap-2 text-left">
+                                <label class="text-[10px] uppercase font-bold text-gray-500 tracking-widest">Email Address</label>
+                                <input type="email" required class="bg-[#111] border border-gray-700 p-3 md:p-4 focus:border-[#f39c12] outline-none text-white text-sm">
+                            </div>
+                            <div class="flex flex-col gap-2 text-left">
+                                <label class="text-[10px] uppercase font-bold text-gray-500 tracking-widest">Service</label>
+                                <select required class="bg-[#111] border border-gray-700 p-3 md:p-4 focus:border-[#f39c12] outline-none text-white text-sm">
+                                    <option value="">Select Service</option>
+                                    <option value="installation">Installation</option>
+                                    <option value="repairs">Repairs</option>
+                                    <option value="cladding">Cladding</option>
+                                    <option value="waterproofing">Waterproofing</option>
+                                    <option value="gutters">Gutters</option>
+                                </select>
+                            </div>
+                            <div class="flex flex-col gap-2 sm:col-span-2 text-left">
+                                <label class="text-[10px] uppercase font-bold text-gray-500 tracking-widest">Message</label>
+                                <textarea rows="3" class="bg-[#111] border border-gray-700 p-3 md:p-4 focus:border-[#f39c12] outline-none text-white text-sm"></textarea>
+                            </div>
+                            <div class="sm:col-span-2">
+                                <button type="submit" class="w-full bg-[#c0392b] hover:bg-[#a93226] text-white py-4 md:py-5 font-black uppercase text-base md:text-lg transition-all shadow-lg">
+                                    Send Quote Request
+                                </button>
+                            </div>
+                        </form>
+                        <div id="form-message" class="hidden mt-6 p-4 bg-green-900/30 border border-green-500 text-green-400 text-center font-bold text-sm">
+                            Thank you! Your request has been sent.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-12 md:py-16 border-t border-gray-900">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-10 text-center md:text-left">
+                <div>
+                    <span class="heading-font text-2xl md:text-3xl leading-none text-white font-black">3T ROOFING</span>
+                    <p class="text-gray-600 text-[10px] md:text-xs uppercase tracking-widest mt-2">Built Tough. Roofed Right.</p>
+                </div>
+                <div class="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest space-y-2">
+                    <p>068 834 7082 | tmabaso879@gmail.com</p>
+                    <p>3630 Zone 2, Zonkizizwe, Katlehong, 1432</p>
+                </div>
+            </div>
+            <div class="mt-12 pt-8 border-t border-gray-900 text-center text-[9px] text-gray-700 uppercase tracking-widest">
+                <p>&copy; 2024 3T Roofing & Enterprise (Pty) Ltd. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const nav = document.getElementById('navbar');
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuClose = document.getElementById('menu-close');
+        const video = document.getElementById('bgVideo');
+
+        // Force play video (Crucial for mobile and GitHub Pages)
+        window.addEventListener('load', () => {
+            if (video) {
+                // Ensure muted is set before play
+                video.muted = true;
+                video.play().catch(error => {
+                    console.log("Autoplay blocked, waiting for interaction or source check.");
+                });
+            }
+        });
+
+        // Toggle Mobile Menu
+        function toggleMenu() {
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : 'auto';
+        }
+
+        menuToggle.addEventListener('click', toggleMenu);
+        menuClose.addEventListener('click', toggleMenu);
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-black/90', 'backdrop-blur-sm', 'shadow-2xl', 'py-2');
+                nav.classList.remove('bg-transparent', 'py-3');
+            } else {
+                nav.classList.add('bg-transparent', 'py-3');
+                nav.classList.remove('bg-black/90', 'backdrop-blur-sm', 'shadow-2xl', 'py-2');
+            }
+        });
+
+        // Scroll Observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+        // Form Submission
+        document.getElementById('quote-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            const msg = document.getElementById('form-message');
+            btn.innerHTML = 'Sending...';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                e.target.reset();
+                btn.innerHTML = 'Send Quote Request';
+                btn.disabled = false;
+                msg.classList.remove('hidden');
+                setTimeout(() => msg.classList.add('hidden'), 5000);
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
